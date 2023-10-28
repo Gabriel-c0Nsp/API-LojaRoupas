@@ -16,7 +16,7 @@ public class Product {
   private Long id;
 
   @NotBlank(message = "You need to insert a title!")
-  private String tile;
+  private String title;
 
   @NotBlank(message = "Image URL is required")
   private String image;
@@ -35,12 +35,12 @@ public class Product {
     this.id = id;
   }
 
-  public String getTile() {
-    return tile;
+  public String getTitle() {
+    return title;
   }
 
-  public void setTile(String tile) {
-    this.tile = tile;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public String getImage() {
