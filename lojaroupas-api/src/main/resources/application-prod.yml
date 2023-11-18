@@ -3,13 +3,13 @@ spring:
     url: jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
     username: ${PROD_DB_USERNAME}
     password: ${PROD_DB_PASSWORD}
-    name: spring-blog
 
   jpa:
     show-sql: true
     open-in-view: false
     hibernate:
-      ddl-auto: update 
+      ddl-auto: validate
+      # dialect: org.hibernate.dialect.PostgreSQLDialect  
     properties:
       hibernate:
         format_sql: true
