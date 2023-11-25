@@ -14,4 +14,5 @@ public interface ProductService {
 
   public List<Product> findAll();
 
+  Product updateProduct(Long id, Product productToUpdate);
 }
