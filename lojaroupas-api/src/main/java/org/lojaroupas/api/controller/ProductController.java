@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/lojaroupas")
@@ -46,6 +47,19 @@ public class ProductController {
         .buildAndExpand(productCreated.getId())
         .toUri();
     return ResponseEntity.created(location).body(productCreated);
+  }
+
+  @PostMapping("/register")
+  public ResponseEntity<List<Product>> registerAll(@RequestBody List<Product> productsToRegister) {
+    Iterable<Product> productsIterable = productService.registerAll(productsToRegister);
+    List<Product> productsCreated = new ArrayList<>();
+    productsIterable.forEach(productsCreated::add);
+
+    if (!productsCreated.isEmpty()) {
+      return ResponseEntity.status(HttpStatus.CREATED).body(productsCreated);
+    } else {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
   }
 
   @DeleteMapping("/{id}")
