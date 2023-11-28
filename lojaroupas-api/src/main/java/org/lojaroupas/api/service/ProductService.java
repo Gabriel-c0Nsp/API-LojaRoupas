@@ -7,8 +7,10 @@ import org.lojaroupas.api.domain.model.Product;
 public interface ProductService {
 
   Product findById(Long id);
-  
+
   Product register(Product productToRegister);
+
+  Iterable<Product> registerAll(Iterable<Product> productListToSave);
 
   void removeById(Long id);
 

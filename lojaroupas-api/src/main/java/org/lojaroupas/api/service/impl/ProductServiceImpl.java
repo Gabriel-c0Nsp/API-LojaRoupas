@@ -5,7 +5,6 @@ import org.lojaroupas.api.domain.model.Product;
 
 import java.util.List;
 
-import org.lojaroupas.api.domain.model.Product;
 import org.lojaroupas.api.domain.repository.ProductRepository;
 import org.lojaroupas.api.service.ProductService;
 import org.springframework.stereotype.Service;
@@ -27,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public Product register(Product productToRegister) {
     return productRepository.save(productToRegister);
+  }
+
+  @Override
+  public Iterable<Product> registerAll(Iterable<Product> productListToSave) {
+    return productRepository.saveAll(productListToSave);
   }
 
   @Override
