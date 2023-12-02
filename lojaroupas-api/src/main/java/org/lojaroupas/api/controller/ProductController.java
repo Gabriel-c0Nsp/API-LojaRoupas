@@ -29,15 +29,18 @@ public class ProductController {
     this.productService = productService;
   }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<Product> findById(@PathVariable Long id) {
-    var product = productService.findById(id);
-    if (product != null) {
-      return ResponseEntity.status(HttpStatus.CREATED).body(product);
-    } else {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+   @GetMapping("/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Long id) {
+        // Chame o serviço para obter o produto (incluindo a inicialização da coleção)
+        Product product = productService.findById(id);
+
+        // Agora a coleção deve estar inicializada
+        if (product != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(product);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
-  }
 
   @PostMapping
   public ResponseEntity<Product> register(@RequestBody Product productToRegister) {
