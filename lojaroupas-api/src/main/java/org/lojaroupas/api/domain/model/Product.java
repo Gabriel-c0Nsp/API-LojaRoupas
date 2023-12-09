@@ -35,6 +35,9 @@ public class Product {
   @Type(type = "text")
   private String description;
 
+  public Product() {
+  }
+
   public Long getId() {
     return id;
   }

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/lojaroupas")
+@RequestMapping("/lojaroupas/product")
 public class ProductController {
 
   private final ProductService productService;
@@ -31,10 +31,8 @@ public class ProductController {
 
    @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id) {
-        // Chame o serviço para obter o produto (incluindo a inicialização da coleção)
         Product product = productService.findById(id);
 
-        // Agora a coleção deve estar inicializada
         if (product != null) {
             return ResponseEntity.status(HttpStatus.OK).body(product);
         } else {
